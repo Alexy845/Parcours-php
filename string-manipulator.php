@@ -1,5 +1,4 @@
 <?php
-
 function capsMe($string) {
     return strtoupper($string);
 }
@@ -13,7 +12,9 @@ function upperCaseFirst($string) {
 }
 
 function lowerCaseFirst($string) {
-    return lcfirst($string);
+    return preg_replace_callback('/\b\w/', function($matches) {
+        return strtolower($matches[0]);
+    }, $string);
 }
 
 function removeBlankSpace($string) {
