@@ -1,10 +1,10 @@
 <?php
 
 function sayHello() {
-    return "Hello \n";
+    return "Hello\n";
 }
 
 function sayHelloTo($name) {
-    return "Hello $name \n";
+    return "Hello $name\n";
 }
 ?>
