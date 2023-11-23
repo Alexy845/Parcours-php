@@ -16,8 +16,8 @@ function lowerCaseFirst($string) {
         return strtolower($matches[0]);
     }, $string);
 }
-
 function removeBlankSpace($string) {
-    return str_replace(' ', '', $string);
+    return preg_replace('/\s+/', '', trim($string));
 }
+print(removeBlankSpace("  Hello   World!  "));
 ?>
