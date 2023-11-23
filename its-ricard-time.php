@@ -1,6 +1,6 @@
 <?php
 
-$nbrRicard = 0;
+$nbrRicard = 1;
 do {
     echo "Come on ricard number $nbrRicard\n";
     if ($nbrRicard == 3) {
