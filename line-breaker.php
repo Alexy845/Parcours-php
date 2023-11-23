@@ -1,27 +1,20 @@
 <?php
-function breakLines($string, $max) : string {
+
+function breakLines(string $string, int $length) : string {
     $string = preg_replace('/\s+/', ' ', trim($string));
-    $words = explode(' ', $string);
+    $string = explode(' ', $string);
     $result = '';
     $line = '';
-
-    foreach ($words as $word) {
-        if (strlen($word) > $max) {
-            return $string;
+    foreach ($string as $word) {
+        if (strlen($line) + strlen($word) <= $length) {
+            $line .= $word . ' ';
+        } else {
+            $result .= trim($line) . "\\n";
+            $line = $word . ' ';
         }
-        if (strlen($line) + strlen($word) > $max) {
-            $result .= $line . "\n";
-            $line = '';
-        }
-        $line .= $word . ' ';
     }
-    $result .= $line;
+    $result .= trim($line);
     return $result;
 }
-
-
-echo breakLines('Line with words', 15); 
-echo breakLines("Line with words should break", 15); 
-echo breakLines("Line with words should break at this spot", 15); 
-
+echo breakLines("Line with words should break at this spot", 15);
 ?>
