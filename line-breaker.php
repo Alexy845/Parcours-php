@@ -1,3 +1,4 @@
+
 <?php
 
 function breakLines(string $string, int $length) : string {
@@ -9,7 +10,7 @@ function breakLines(string $string, int $length) : string {
         if (strlen($line) + strlen($word) <= $length) {
             $line .= $word . ' ';
         } else {
-            $result .= trim($line) . "\\n";
+            $result .= trim($line) . "\n";
             $line = $word . ' ';
         }
     }
@@ -17,4 +18,3 @@ function breakLines(string $string, int $length) : string {
     return $result;
 }
 echo breakLines("Line with words should break at this spot", 15);
-?>
