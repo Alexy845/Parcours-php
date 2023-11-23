@@ -1,24 +1,35 @@
 
 <?php
-function breakLines(string $string, int $length) : string {
+function breakLines(string $string, int $length): string {
     $string = preg_replace('/\s+/', ' ', $string);
-    $words = preg_split('/\s+/', $string);
+    $lines = explode("\n", $string);
     $result = '';
-    $line = '';
-    
-    foreach ($words as $word) {
-        $word = trim($word);
 
-        if (strlen($line) + strlen($word) <= $length) {
-            $line .= $word . ' ';
-        } else {
-            $result .= rtrim($line) . "\n";
-            $line = $word . ' ';
+    foreach ($lines as $line) {
+        $words = explode(' ', $line);
+        $currentLine = '';
+
+        foreach ($words as $word) {
+            $word = trim($word);
+
+            if (strlen($currentLine) + strlen($word) <= $length) {
+                $currentLine .= $word . ' ';
+            } else {
+                if (!empty($currentLine)) {
+                    $result .= rtrim($currentLine) . "\n";
+                    $currentLine = '';
+                }
+                
+                $currentLine .= $word . ' ';
+            }
+        }
+
+        if (!empty($currentLine)) {
+            $result .= rtrim($currentLine) . "\n";
         }
     }
 
-    $result .= rtrim($line);
-    return $result;
+    return rtrim($result);
 }
 
 echo breakLines('Line with words', 15); // returns "Line with words"
