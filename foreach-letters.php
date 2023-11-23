@@ -1,6 +1,5 @@
 <?php
-foreach (range('A', 'Z') as $letter) {
-    echo $letter . " | ";
-}
-echo rtrim($letter, " | ");
-?>
+$alphabet = range('A', 'Z');
+foreach ($alphabet as $index => $letter) {
+    echo $letter;
+    if ($index !== count($alphabet) - 1) echo ' | ';}?>
