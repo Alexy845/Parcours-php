@@ -4,7 +4,7 @@ function sayHello() {
     return "Hello";
 }
 
-function sayHelloTo($name) {
+function sayHelloTo($name): string {
     return "Hello $name";
 }
 ?>
