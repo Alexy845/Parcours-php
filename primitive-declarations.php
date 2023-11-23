@@ -1,6 +1,7 @@
 <?php
+
 $firstStr = "Hello";
-$firstEscapeStr = "Hello \"World\"";
+$firstEscapeStr = "Hello \n World";
 $firstBool = true;
 $firstInteger = 1;
 $firstFloat = 1.1;
