@@ -8,5 +8,5 @@ function factorial($number) : int {
         return 1;
     }
 
-    return (int)$number * factorial($number - 1);
+    return (int)$number * int(factorial($number - 1));
 }
