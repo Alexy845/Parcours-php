@@ -8,6 +8,22 @@ function getFloor(int $currentFloor, ?int $requestedFloor, array $calledFloors):
         return $requestedFloor === $currentFloor ? $requestedFloor : null;
     }
 
+    if ($requestedFloor === null) {
+        sort($calledFloors);
+        $closestFloor = null;
+        $minDiff = PHP_INT_MAX;
+
+        foreach ($calledFloors as $floor) {
+            $diff = abs($currentFloor - $floor);
+            if ($diff < $minDiff) {
+                $minDiff = $diff;
+                $closestFloor = $floor;
+            }
+        }
+
+        return $closestFloor;
+    }
+
     $calledFloors[] = $requestedFloor;
     sort($calledFloors);
 
