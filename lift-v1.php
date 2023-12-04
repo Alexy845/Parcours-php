@@ -5,7 +5,7 @@ function getFloor(int $currentFloor, ?int $requestedFloor, array $calledFloors):
     }
 
     if (empty($calledFloors)) {
-        return ($requestedFloor === $currentFloor) ? $requestedFloor : null;
+        return $requestedFloor === $currentFloor ? $requestedFloor : null;
     }
 
     $calledFloors[] = $requestedFloor;
@@ -22,7 +22,7 @@ function getFloor(int $currentFloor, ?int $requestedFloor, array $calledFloors):
         }
     }
 
-    return $closestFloor;
+    return $closestFloor !== null ? $closestFloor : $currentFloor;
 }
 
 function getDirection(int $currentFloor, ?int $requestedFloor, array $calledFloors): int {
