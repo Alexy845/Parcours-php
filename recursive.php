@@ -1,5 +1,5 @@
 <?php
-function factorial($number) : int{
+function factorial($number) : int {
     if ($number < 0) {
         return null;
     }
@@ -8,5 +8,5 @@ function factorial($number) : int{
         return 1;
     }
 
-    return $number * factorial($number - 1);
+    return intval($number) * factorial($number - 1);
 }
