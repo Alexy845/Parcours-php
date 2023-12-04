@@ -3,11 +3,14 @@ function getFloor(int $currentFloor, ?int $requestedFloor, array $calledFloors):
     if ($requestedFloor !== null && in_array($requestedFloor, $calledFloors)) {
         return $requestedFloor;
     }
+
     if (empty($calledFloors)) {
-        return $requestedFloor === $currentFloor ? null : $requestedFloor; 
+        return ($requestedFloor === $currentFloor) ? $requestedFloor : null;
     }
+
     $calledFloors[] = $requestedFloor;
     sort($calledFloors);
+
     $closestFloor = null;
     $minDiff = PHP_INT_MAX;
 
@@ -18,20 +21,22 @@ function getFloor(int $currentFloor, ?int $requestedFloor, array $calledFloors):
             $closestFloor = $floor;
         }
     }
+
     return $closestFloor;
 }
+
 function getDirection(int $currentFloor, ?int $requestedFloor, array $calledFloors): int {
     if ($requestedFloor === null && empty($calledFloors)) {
-        return 0; 
+        return 0;
     }
 
     $nextFloor = getFloor($currentFloor, $requestedFloor, $calledFloors);
 
     if ($nextFloor === $currentFloor) {
-        return 0; 
+        return 0;
     } elseif ($nextFloor < $currentFloor) {
-        return -1; 
+        return -1;
     } else {
-        return 1; 
+        return 1;
     }
 }
