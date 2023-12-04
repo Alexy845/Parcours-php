@@ -1,10 +1,10 @@
 <?php
 function getFloor(int $currentFloor, ?int $requestedFloor, array $calledFloors): ?int {
     if ($requestedFloor !== null && in_array($requestedFloor, $calledFloors)) {
-        return $requestedFloor; 
+        return $requestedFloor;
     }
     if (empty($calledFloors)) {
-        return null; 
+        return $requestedFloor === $currentFloor ? null : $requestedFloor; 
     }
     $calledFloors[] = $requestedFloor;
     sort($calledFloors);
