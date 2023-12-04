@@ -1,27 +1,38 @@
 <?php
-function breakLines($string, $maxLength): string { 
-    $words = explode(" ", $string);
+function breakLines($string, $maxLength) {
+    $lines = explode("\n", $string);
     $result = '';
-    $lineLength = 0;
 
-    foreach ($words as $word) {
-        $wordLength = strlen($word);
+    foreach ($lines as $line) {
+        $words = explode(" ", $line);
+        $lineLength = 0;
 
-        if ($lineLength + $wordLength <= $maxLength) {
-            $result .= $word . ' ';
-            $lineLength += $wordLength + 1;
-        } else {
-            $result = rtrim($result);
-            $result .= "\n" . $word . ' ';
-            $lineLength = $wordLength + 1;
+        foreach ($words as $word) {
+            $wordLength = strlen($word);
+
+            if ($wordLength > $maxLength) {
+                $result .= rtrim($result) !== '' ? "\n" : '';
+                $result .= $word . "\n";
+                $lineLength = 0;
+            } elseif ($lineLength === 0 || $lineLength + $wordLength <= $maxLength) {
+                if ($lineLength > 0) {
+                    $result .= ' ';
+                    $lineLength++;
+                }
+                $result .= $word;
+                $lineLength += $wordLength;
+            } else {
+
+                $result .= "\n" . $word;
+                $lineLength = $wordLength;
+            }
         }
+
+        $result .= "\n"; 
     }
 
     return rtrim($result);
 }
 
-echo breakLines('Line with words', 15);
-echo "\n";
-echo breakLines("Line with words should break", 15);
-echo "\n";
 echo breakLines("Line with words should break at this spot", 15);
+
