@@ -1,5 +1,5 @@
 <?php
-function breakLines($string, $maxLength) {
+function breakLines($string, $maxLength) : string {
     $lines = explode("\n", $string);
     $result = '';
 
