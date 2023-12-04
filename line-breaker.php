@@ -20,7 +20,7 @@ function breakLines(string $string, int $maxLength): string {
                 $lineLength = $wordLength + 1;
             }
         }
-        $result .= "\n";
+        $result = rtrim($result) . "\n";
     }
 
     return rtrim($result);
