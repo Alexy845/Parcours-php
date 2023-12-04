@@ -7,12 +7,13 @@ function breakLines(string $string, int $maxLength): string {
         $words = explode(" ", $line);
         $lineLength = 0;
 
-        foreach ($words as $word) {
+        foreach ($words as $index => $word) {
             $wordLength = strlen($word);
 
             if ($lineLength + $wordLength <= $maxLength) {
-                $result .= $word . ' ';
-                $lineLength += $wordLength + 1;
+                $separator = ($index === count($words) - 1) ? '' : ' ';
+                $result .= $word . $separator;
+                $lineLength += $wordLength + strlen($separator);
             } else {
                 $result = rtrim($result);
                 $result .= "\n" . $word . ' ';
@@ -24,6 +25,5 @@ function breakLines(string $string, int $maxLength): string {
 
     return rtrim($result);
 }
-
 
 echo breakLines('Title is long Line with words break', 12);
