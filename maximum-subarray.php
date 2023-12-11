@@ -1,5 +1,5 @@
 <?php
-function findMaximumSubarray($array) {
+function findMaximumSubarray($array) : int|float {
     $maxSum = $array[0];
     $currentSum = $array[0];
 
