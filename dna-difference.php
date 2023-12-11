@@ -1,7 +1,7 @@
 <?php
 function dnaDiff($strand1, $strand2) : int {
     if (strlen($strand1) !== strlen($strand2)) {
-        return false;
+        return 0;
     }
     $differences = 0;
     for ($i = 0; $i < strlen($strand1); $i++) {
