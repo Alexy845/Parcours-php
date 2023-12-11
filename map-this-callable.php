@@ -1,20 +1,17 @@
 <?php
-function myArrayMap(callable $callback, array $array1, array $array2) {
+function myArrayMap(callable $callback, array $array) {
     $result = [];
-    $count = count($array1);
 
-    for ($i = 0; $i < $count; $i++) {
-        $result[] = $callback($array1[$i], $array2[$i]);
+    foreach ($array as $value) {
+        $result[] = $callback($value);
     }
 
     return $result;
 }
 
-$array1 = [1, 2, 3];
-$array2 = [4, 5, 6];
-$mapped = myArrayMap(function ($a, $b) {
-    return $a * $b;
-}, $array1, $array2);
+$array = [1, 2, 3, 4];
+$mapped = myArrayMap(function ($a) {
+    return $a * 2;
+}, $array);
 
-print_r($mapped); // Output: [4, 10, 18]
-
+print_r($mapped); // [2, 4, 6, 8]
