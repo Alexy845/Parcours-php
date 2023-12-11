@@ -1,5 +1,5 @@
 <?php
-function checkCircuits($number) {
+function checkCircuits($number) : array {
     $bugLocations = [];
 
     if ($number % 2 === 0) {
