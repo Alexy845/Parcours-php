@@ -1,9 +1,13 @@
 <?php
-function dnaDiff($strand1, $strand2) : int {
+function dnaDiff($strand1, $strand2): int|bool {
+    // Vérifier si les longueurs des chaînes sont différentes
     if (strlen($strand1) !== strlen($strand2)) {
-        return 0;
+        return false;
     }
+
     $differences = 0;
+
+    // Calculer le nombre de différences entre les chaînes d'ADN
     for ($i = 0; $i < strlen($strand1); $i++) {
         if ($strand1[$i] !== $strand2[$i]) {
             $differences++;
@@ -13,5 +17,5 @@ function dnaDiff($strand1, $strand2) : int {
     return $differences;
 }
 
-echo dnaDiff('GAGCCTACTAACGGGAT', 'CATCGTAATGACGGCCTAZA'); 
-
+// Test cases
+var_dump(dnaDiff('GAGCCTACTAACGGGAT', 'CATCGTAATGACGGCCTAZA')); //  bool(false)
