@@ -1,11 +1,10 @@
 <?php
-function myArrayMap(callable $callback, array ...$arrays) : array {
+function myArrayMap(callable $callback, array $array1, array $array2) {
     $result = [];
-    $count = count($arrays[0]);
+    $count = count($array1);
 
     for ($i = 0; $i < $count; $i++) {
-        $params = array_column($arrays, $i);
-        $result[] = call_user_func_array($callback, $params);
+        $result[] = $callback($array1[$i], $array2[$i]);
     }
 
     return $result;
@@ -13,9 +12,9 @@ function myArrayMap(callable $callback, array ...$arrays) : array {
 
 $array1 = [1, 2, 3];
 $array2 = [4, 5, 6];
-
 $mapped = myArrayMap(function ($a, $b) {
     return $a * $b;
 }, $array1, $array2);
 
-print_r($mapped); // [4, 10, 18]
+print_r($mapped); // Output: [4, 10, 18]
+
