@@ -8,7 +8,7 @@ function manageMovements($movements): array {
 
         if (in_array($movement, ['R', 'L', 'F', 'B'])) {
             if ($movement === $previousMovement) {
-                $instructions[] = 'WARNING: ' . getMovementName($movement) . ' AGAIN';
+                $instructions[] = getMovementName($movement) . ' AGAIN';
             } else {
                 $instructions[] = getMovementName($movement);
             }
