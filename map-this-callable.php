@@ -1,16 +1,18 @@
 <?php
-function myArrayMap(callable $callback, array $array): array{
+function myArrayMap(callable $callback, array $array1, array $array2) {
     $result = [];
-    foreach ($array as $key => $value) {
-        $result[$key] = call_user_func($callback, $value);
+    $count = min(count($array1), count($array2)); 
+    for ($i = 0; $i < $count; $i++) {
+        $result[] = $callback($array1[$i], $array2[$i]);
     }
     return $result;
 }
 
-$array = [1, 2, 3, 4, 5];
+$array1 = [1, 2, 3];
+$array2 = [4, 5, 6];
 
-$multiplied = myArrayMap(function ($value) {
-    return $value * 2;
-}, $array);
+$mapped = myArrayMap(function ($a, $b) {
+    return $a * $b;
+}, $array1, $array2);
 
-echo implode(', ', $multiplied); // 2, 4, 6, 8, 10
+print_r($mapped); // [4, 10, 18]
