@@ -1,11 +1,13 @@
 <?php
-function myArrayMap(callable $callback, array ...$arrays) : array{
+function myArrayMap(callable $callback, array ...$arrays) : array {
     $result = [];
     $count = count($arrays[0]);
+
     for ($i = 0; $i < $count; $i++) {
         $params = array_column($arrays, $i);
         $result[] = call_user_func_array($callback, $params);
     }
+
     return $result;
 }
 
