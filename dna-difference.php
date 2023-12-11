@@ -1,5 +1,5 @@
 <?php
-function dnaDiff($strand1, $strand2) : int {
+function dnaDiff($strand1, $strand2) {
     if (strlen($strand1) !== strlen($strand2)) {
         return 0;
     }
@@ -9,7 +9,9 @@ function dnaDiff($strand1, $strand2) : int {
             $differences++;
         }
     }
+
     return $differences;
 }
 
-echo dnaDiff('GAGCCTACTAACGGGAT', 'CATCGTAATGACGGCCT'); // 7
+echo dnaDiff('GAGCCTACTAACGGGAT', 'CATCGTAATGACGGCCTAZA'); 
+
